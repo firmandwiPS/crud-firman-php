@@ -10,7 +10,7 @@ include 'config/app.php'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title><?= $title; ?></title>
 
   <!-- DataTables -->
   <link rel="stylesheet" href="assets-template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -44,6 +44,8 @@ include 'config/app.php'
 
   <!-- jQuery -->
   <script src="assets-template/plugins/jquery/jquery.min.js"></script>
+
+  
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -62,7 +64,7 @@ include 'config/app.php'
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -195,20 +197,16 @@ include 'config/app.php'
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="../assets/img/muka.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="index.php" class="brand-link">
+      <span class="brand-text font-weight-light">CRUD PHP <?= $_SESSION['nama']; ?></span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../assets/img/muka.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="index.php" class="d-block"><?= $_SESSION['nama']; ?></a>
         </div>
       </div>
 
@@ -229,7 +227,7 @@ include 'config/app.php'
         <ul class="nav nav-pills nav-sidebar flex-colomn" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-header">Daftar Menu</li>
             <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="index.php" class="nav-link">
                     <i class="nav-icon fas fa-box"></i>
                     <p>
                         Data Barang
@@ -237,7 +235,7 @@ include 'config/app.php'
                 </a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="mahasiswa.php" class="nav-link">
                     <i class="nav-icon fas fa-user-graduate"></i>
                     <p>
                         Data Mahasiswa
@@ -245,20 +243,37 @@ include 'config/app.php'
                 </a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="pegawai.php" class="nav-link">
                     <i class="nav-icon fas fa-user"></i>
                     <p>
-                        Data Mahasiswa
+                        Data Pegawai
                     </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                <a href="email.php" class="nav-link">
+                    <i class="nav-icon fas fa-envelope"></i>
                     <p>
-                        Logout
+                        Kirim Email 
                     </p>
                 </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="akun.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Data Akun
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="logout.php" class="nav-link" onclick="return confirm('Yakin Anda Ingin Keluar.?');">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>
+                  Logout
+                </p>
+              </a>
             </li>
         </ul>
       </nav>

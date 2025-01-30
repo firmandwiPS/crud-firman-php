@@ -58,63 +58,91 @@ if (isset($_POST['ubah'])) {
     <hr>
 
 
-<?php if ($_SESSION['level'] == 1 ) : ?>
+
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow-sm rounded">
+          <div class="card-header bg-primary text-white">
+            <h3 class="card-title"><i class="fa-solid fa-user"></i> Tabel Data Akun</h3>
+          </div>
+          
+          <!-- /.card-header -->
+          <div class="card-body">
+          <?php if ($_SESSION['level'] == 1 ) : ?>
     <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#modalTambah"><i
             class="fa-solid fa-circle-plus"></i> Tambah</button>
 <?php endif; ?>
 
-
-    <table class="table table-bordered table-striped mt-3" id="table">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <?php $no = 1; ?>
-            <?php if ($_SESSION['level'] == 1 ) :?>
-            <?php foreach ($data_akun as $akun): ?>
-                <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $akun['nama']; ?></td>
-                    <td><?= $akun['username']; ?></td>
-                    <td><?= $akun['email']; ?></td>
-                    <td>Password Ter-enkripsi</td>
-                    <td width="20%" class="text-center" >
-                        <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal"
-                            data-bs-target="#modalUbah<?= $akun['id_akun']; ?>"><i class="fa-regular fa-pen-to-square"></i>
-                            Ubah</button>
-                        <button type="button" class="btn btn-danger mb-1" data-bs-toggle="modal"
-                            data-bs-target="#modalHapus<?= $akun['id_akun']; ?>"><i class="fa-solid fa-trash-can"></i>
-                            Hapus</button>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-            <?php else : ?>
-                <?php foreach ($data_bylogin as $akun): ?>
-                <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $akun['nama']; ?></td>
-                    <td><?= $akun['username']; ?></td>
-                    <td><?= $akun['email']; ?></td>
-                    <td>Password Ter-enkripsi</td>
-                    <td width="20%" class="text-center" >
-                        <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal"
-                            data-bs-target="#modalUbah<?= $akun['id_akun']; ?>"><i class="fa-regular fa-pen-to-square"></i>
-                            Ubah</button>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-            <?php endif; ?>
-        </tbody>
-    </table>
-</div>
+            <!-- Table -->
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped mt-3" id="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $no = 1; ?>
+                  <?php if ($_SESSION['level'] == 1) : ?>
+                    <?php foreach ($data_akun as $akun): ?>
+                      <tr>
+                        <td><?= $no++; ?></td>
+                        <td><?= htmlspecialchars($akun['nama']); ?></td>
+                        <td><?= htmlspecialchars($akun['username']); ?></td>
+                        <td><?= htmlspecialchars($akun['email']); ?></td>
+                        <td>Password Ter-enkripsi</td>
+                        <td width="20%" class="text-center">
+                          <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal"
+                                  data-bs-target="#modalUbah<?= $akun['id_akun']; ?>">
+                            <i class="fa-regular fa-pen-to-square"></i> Ubah
+                          </button>
+                          <button type="button" class="btn btn-danger mb-1" data-bs-toggle="modal"
+                                  data-bs-target="#modalHapus<?= $akun['id_akun']; ?>">
+                            <i class="fa-solid fa-trash-can"></i> Hapus
+                          </button>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                  <?php else : ?>
+                    <?php foreach ($data_bylogin as $akun): ?>
+                      <tr>
+                        <td><?= $no++; ?></td>
+                        <td><?= htmlspecialchars($akun['nama']); ?></td>
+                        <td><?= htmlspecialchars($akun['username']); ?></td>
+                        <td><?= htmlspecialchars($akun['email']); ?></td>
+                        <td>Password Ter-enkripsi</td>
+                        <td width="20%" class="text-center">
+                          <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal"
+                                  data-bs-target="#modalUbah<?= $akun['id_akun']; ?>">
+                            <i class="fa-regular fa-pen-to-square"></i> Ubah
+                          </button>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.table-responsive -->
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
 
 <!-- Modal tambah -->
 <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -166,6 +194,9 @@ if (isset($_POST['ubah'])) {
         </div>
     </div>
 </div>
+
+
+
 
 <!-- Modal ubah -->
 <?php foreach ($data_akun as $akun): ?>
@@ -232,8 +263,8 @@ if (isset($_POST['ubah'])) {
     </div>
 <?php endforeach; ?>
 
+<!-- Modal Hapus -->
 <?php foreach ($data_akun as $akun): ?>
-    <!-- Modal Hapus -->
     <div class="modal fade" id="modalHapus<?= $akun['id_akun'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">

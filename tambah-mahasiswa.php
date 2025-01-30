@@ -30,7 +30,7 @@ if (isset($_POST['tambah'])) {
 ?>
 
 <div class="container mt-5">
-    <h1> Tambah Data mahaSiswa </h1>
+    <h1> Tambah Data Mahasiswa </h1>
     <hr>
     <a href="mahasiswa.php" class="btn btn-primary mb-3"><i class="fa-solid fa-right-from-bracket"></i> Kembali</a>
     <form action="" method="post" enctype="multipart/form-data">

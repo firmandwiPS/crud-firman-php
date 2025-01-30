@@ -48,7 +48,7 @@ include 'config/app.php';
                         <a class="nav-link " href="crud-modal.php">Akun</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="logout.php" onclick="return confirm('Yakin Ingin Keluar')" ><i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a class="nav-link" href="logout.php" onclick="return confirm('Yakin Ingin Keluar')" ><i class="fa-solid fa-right-from-bracket"></i></a>
                     </li>
                 </ul>
             </div>

@@ -25,50 +25,97 @@ include 'layout/header.php';
 $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC");
 
 ?>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0"><i class="nav-icon fas fa-user-graduate"></i> Data Mahasiswa</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active">Mahasiswa</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
-<div class="container mt-5">
-    <h1><i class="fa-solid fa-users-line"></i> Data MahaSiswa </h1>
-    <hr>
-    <a href="tambah-mahasiswa.php" class="btn btn-primary mb-1"><i class="fa-solid fa-circle-plus">
-    </i> Tambah</a>
-    <a href="download-excel-mahasiswa.php" class="btn btn-success mb-1"><i class="fas fa-file-excel">
-    </i> Download Excel</a>
-    <a href="download-pdf-mahasiswa.php" class="btn btn-danger mb-1"><i class="fa-solid fa-circle-plus"></i> Download
-        PDF</a>
+    <section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow-sm rounded">
+          <div class="card-header bg-primary text-white">
+            <h3 class="card-title"><i class="fa-solid fa-user-graduate"></i> Tabel Data Mahasiswa</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <!-- Action Buttons -->
+            <div class="mb-3">
+              <a href="tambah-mahasiswa.php" class="btn btn-primary rounded-pill mb-1">
+                <i class="fa-solid fa-circle-plus"></i> Tambah
+              </a>
+              <a href="download-excel-mahasiswa.php" class="btn btn-success rounded-pill mb-1">
+                <i class="fas fa-file-excel"></i> Download Excel
+              </a>
+              <a href="download-pdf-mahasiswa.php" class="btn btn-danger rounded-pill mb-1">
+                <i class="fa-solid fa-file-pdf"></i> Download PDF
+              </a>
+            </div>
 
-    <table class="table table-bordered table-striped mt-3" id="table">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Prodi</th>
-                <th>Jenis Kelamin</th>
-                <th>Telepon</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1; ?>
-            <?php foreach ($data_mahasiswa as $mahasiswa): ?>
-                <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $mahasiswa['nama']; ?></td>
-                    <td><?= $mahasiswa['prodi']; ?></td>
-                    <td><?= $mahasiswa['jk']; ?></td>
-                    <td><?= $mahasiswa['telepon']; ?></td>
-                    <td class="text-center" width="26%">
-                        <a href="detail-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>"
-                            class="btn btn-secondary"><i class="fa-solid fa-circle-info"></i> Detail</a>
-                        <a href="ubah-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-success"><i
-                                class="fa-regular fa-pen-to-square"></i> Ubah</a>
-                        <a href="hapus-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-danger"
-                            onclick="return confirm('Yakin Data mahasiswa Akan Dihapus.');"><i
-                                class="fa-solid fa-trash-can"></i> Hapus</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
+            <!-- Table -->
+            <div class="table-responsive">
+              <table id="serverside" class="table table-bordered table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Prodi</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Telepon</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $no = 1; ?>
+                  <?php foreach ($data_mahasiswa as $mahasiswa): ?>
+                    <tr>
+                      <td><?= $no++; ?></td>
+                      <td><?= htmlspecialchars($mahasiswa['nama']); ?></td>
+                      <td><?= htmlspecialchars($mahasiswa['prodi']); ?></td>
+                      <td><?= htmlspecialchars($mahasiswa['jk']); ?></td>
+                      <td><?= htmlspecialchars($mahasiswa['telepon']); ?></td>
+                      <td class="text-center" width="26%">
+                        <a href="detail-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-secondary rounded-pill" data-toggle="tooltip" title="Detail">
+                          <i class="fa-solid fa-circle-info"></i> Detail
+                        </a>
+                        <a href="ubah-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-success rounded-pill" data-toggle="tooltip" title="Ubah">
+                          <i class="fa-regular fa-pen-to-square"></i> Ubah
+                        </a>
+                        <a href="hapus-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Yakin Data mahasiswa Akan Dihapus?');" data-toggle="tooltip" title="Hapus">
+                          <i class="fa-solid fa-trash-can"></i> Hapus
+                        </a>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.table-responsive -->
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
 
 <?php include 'layout/footer.php'; ?>

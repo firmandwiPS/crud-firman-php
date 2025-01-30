@@ -1,10 +1,5 @@
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
   </footer>
 
   <!-- Control Sidebar -->
@@ -96,10 +91,20 @@
     integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
     crossorigin="anonymous"></script>
 
+    
 <script>
   $(function() {
     $("#example1").DataTable();
   });
+</script>
+
+<script>
+  new DataTable('#example', {
+    ajax: 'scripts/server_processing.php',
+    processing: true,
+    serverSide: true,
+    ajax: 'mahasiswa-serverside?action=table_data'
+});
 </script>
 
 </body>
