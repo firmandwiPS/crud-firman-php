@@ -1,5 +1,5 @@
 Teknologi : 
-- PHP 8.*
+- PHP 7.*
 - Bootstrap 4.*
 - MySQL/MariaDB
 
