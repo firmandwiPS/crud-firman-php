@@ -12,7 +12,7 @@ if (!isset($_SESSION["login"])) {
 if ($_SESSION["level"] != 1 and $_SESSION["level"] != 3 ) {
     echo "<script>
             alert('Perhatian Anda Tidak Punya Hak Akses!!');
-            document.location.href='crud-modal.php';
+            document.location.href='akun.php';
         </script>";
     exit;
 }
@@ -50,20 +50,20 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC");
       <div class="col-12">
         <div class="card shadow-sm rounded">
           <div class="card-header bg-primary text-white">
-            <h3 class="card-title"><i class="fa-solid fa-user-graduate"></i> Tabel Data Mahasiswa</h3>
+            <h3 class="card-title">Tabel Data Mahasiswa</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <!-- Action Buttons -->
             <div class="mb-3">
               <a href="tambah-mahasiswa.php" class="btn btn-primary rounded-pill mb-1">
-                <i class="fa-solid fa-circle-plus"></i> Tambah
+                Tambah
               </a>
               <a href="download-excel-mahasiswa.php" class="btn btn-success rounded-pill mb-1">
-                <i class="fas fa-file-excel"></i> Download Excel
+                Download Excel
               </a>
               <a href="download-pdf-mahasiswa.php" class="btn btn-danger rounded-pill mb-1">
-                <i class="fa-solid fa-file-pdf"></i> Download PDF
+                Download PDF
               </a>
             </div>
 
@@ -93,7 +93,7 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC");
                         <a href="detail-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-secondary rounded-pill" data-toggle="tooltip" title="Detail">
                           <i class="fa-solid fa-circle-info"></i> Detail
                         </a>
-                        <a href="ubah-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-success rounded-pill" data-toggle="tooltip" title="Ubah">
+                        <a href="ubah-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-warning rounded-pill" data-toggle="tooltip" title="Ubah">
                           <i class="fa-regular fa-pen-to-square"></i> Ubah
                         </a>
                         <a href="hapus-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Yakin Data mahasiswa Akan Dihapus?');" data-toggle="tooltip" title="Hapus">

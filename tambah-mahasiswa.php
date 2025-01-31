@@ -17,12 +17,12 @@ include 'layout/header.php';
 if (isset($_POST['tambah'])) {
     if (create_mahasiswa($_POST) > 0) {
         echo "<script>
-            alert('Data mahaSiswa Berhasil Ditambahkan');
+            alert('Data Mahasiswa Berhasil Ditambahkan');
             document.location.href = 'mahasiswa.php';
             </script>";
     } else {
         echo "<script>
-        alert('Data mahaSiswa Gagal Ditambahkan');
+        alert('Data Mahasiswa Gagal Ditambahkan');
             document.location.href = 'mahasiswa.php';
             </script>";
     }
@@ -32,7 +32,7 @@ if (isset($_POST['tambah'])) {
 <div class="container mt-5">
     <h1> Tambah Data Mahasiswa </h1>
     <hr>
-    <a href="mahasiswa.php" class="btn btn-primary mb-3"><i class="fa-solid fa-right-from-bracket"></i> Kembali</a>
+    <a href="mahasiswa.php" class="btn btn-primary mb-3 rounded-pill"><i class="fa-solid fa-right-from-bracket"></i> Kembali</a>
     <form action="" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="nama" class="form-label">Nama Mahasiswa</label>
@@ -80,7 +80,7 @@ if (isset($_POST['tambah'])) {
             <input type="file" class="form-control" id="foto" name="foto" placeholder="Foto...">
         </div>
 
-        <button type="submit" name="tambah" class="btn btn-primary" style="float: right;"> <i
+        <button type="submit" name="tambah" class="btn btn-primary rounded-pill" style="float: right;"> <i
                 class="fas fa-plus"></i>Tambah</button>
 
     </form>

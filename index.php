@@ -15,7 +15,7 @@ if (!isset($_SESSION["login"])) {
 if ($_SESSION["level"] != 1 and $_SESSION["level"] != 2 ) {
     echo "<script>
             alert('Perhatian Anda Tidak Punya Hak Akses!!');
-            document.location.href='index.php';
+            document.location.href='akun.php';
         </script>";
     exit;
 }
@@ -185,10 +185,10 @@ if (isset($_POST['filter'])) {
                       <td><?= date("d/m/Y | H:i:s", strtotime($barang['tanggal'])); ?></td>
                       <td class="text-center">
                         <a href="ubah-barang.php?id_barang=<?= $barang['id_barang']; ?>" class="btn btn-warning rounded-pill" data-toggle="tooltip" title="Ubah Data">
-                          <i class="fa-regular fa-pen-to-square"></i> Ubah
+                          Ubah
                         </a>
                         <a href="hapus-barang.php?id_barang=<?= $barang['id_barang']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Yakin Data Barang Akan Dihapus?');" data-toggle="tooltip" title="Hapus Data">
-                          <i class="fa-solid fa-trash"></i> Hapus
+                         Hapus
                         </a>
                       </td>
                     </tr>

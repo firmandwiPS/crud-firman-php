@@ -38,7 +38,7 @@ $mahasiswa = mysqli_fetch_array($mahasiswa);
 ?>
 
 <div class="container mt-5">
-    <h1>Ubah mahasiswa</h1>
+    <h1>Ubah Mahasiswa</h1>
     <hr>
 
     <form action="" method="post" enctype="multipart/form-data">
@@ -102,7 +102,7 @@ $mahasiswa = mysqli_fetch_array($mahasiswa);
             <img src="assets/img/<?= $mahasiswa['foto']; ?>" alt="foto" width="100px">
         </div>
 
-        <button type="submit" class="btn btn-primary" name="tambah" style="float: right;">Ubah
+        <button type="submit" class="btn btn-primary rounded-pill " name="tambah" style="float: right;">Ubah
 
         </button>
     </form>

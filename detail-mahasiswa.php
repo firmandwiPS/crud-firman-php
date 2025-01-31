@@ -67,7 +67,7 @@ $mahasiswa = mysqli_fetch_array($mahasiswa);
             </td>
         </tr>
     </table>
-    <a href="mahasiswa.php" class="btn btn-secondary btn-sm" style="float: right;">Kembali</a>
+    <a href="mahasiswa.php" class="btn btn-secondary rounded-pill" style="float: right;">Kembali</a>
 </div>
 
 <?php include 'layout/footer.php'; ?>

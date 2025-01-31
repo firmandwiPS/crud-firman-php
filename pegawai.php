@@ -12,7 +12,7 @@ if (!isset($_SESSION["login"])) {
 if ($_SESSION["level"] != 1 and $_SESSION["level"] != 3 ) {
     echo "<script>
             alert('Perhatian Anda Tidak Punya Hak Akses!!');
-            document.location.href='crud-modal.php';
+            document.location.href='akun.php';
         </script>";
     exit;
 }
@@ -48,22 +48,16 @@ $data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
       <div class="col-12">
         <div class="card shadow-sm rounded">
           <div class="card-header bg-primary text-white">
-            <h3 class="card-title"><i class="fa-solid fa-users"></i> Tabel Data Pegawai</h3>
+            <h3 class="card-title">Tabel Data Pegawai</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <!-- Action Buttons -->
-            <!-- <div class="mb-3">
-              <a href="tambah-pegawai.php" class="btn btn-primary rounded-pill mb-1">
+            <div class="mb-3">
+              <!-- <a href="tambah-pegawai.php" class="btn btn-primary rounded-pill mb-1">
                 <i class="fa-solid fa-circle-plus"></i> Tambah Pegawai
-              </a>
-              <a href="download-excel-pegawai.php" class="btn btn-success rounded-pill mb-1">
-                <i class="fas fa-file-excel"></i> Download Excel
-              </a>
-              <a href="download-pdf-pegawai.php" class="btn btn-danger rounded-pill mb-1">
-                <i class="fa-solid fa-file-pdf"></i> Download PDF
-              </a>
-            </div> -->
+              </a> -->
+            </div>
 
             <!-- Table -->
             <div class="table-responsive">

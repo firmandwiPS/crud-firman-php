@@ -45,8 +45,10 @@ if (isset($_POST['ubah'])) {
 <div class="content-wrapper">
     <div class="container mt-5">
         <h1>Ubah Barang</h1>
-
         <hr>
+
+        <a href="index.php" class="btn btn-primary mb-3 rounded-pill"><i class="fa-solid fa-right-from-bracket"></i> Kembali</a>
+
         <form action="" method="POST">
 
             <input type="hidden" name="id_barang" value="<?= $id_barang ?>">
@@ -62,7 +64,7 @@ if (isset($_POST['ubah'])) {
                 <label for="harga" class="form-label">Harga</label>
                 <input type="number" class="form-control" id="harga" name="harga" value="<?= $harga ?>" required>
             </div>
-            <button type="submit" name="ubah" class="btn btn-primary" style="float: right;">Ubah</button>
+            <button type="submit" name="ubah" class="btn btn-primary rounded-pill " style="float: right;">Ubah</button>
         </form>
 
     </div>

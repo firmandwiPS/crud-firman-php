@@ -72,8 +72,8 @@ if (isset($_POST['ubah'])) {
           <!-- /.card-header -->
           <div class="card-body">
           <?php if ($_SESSION['level'] == 1 ) : ?>
-    <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#modalTambah"><i
-            class="fa-solid fa-circle-plus"></i> Tambah</button>
+    <button type="button" class="btn btn-primary mb-1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalTambah"><i
+            class="fa-solid fa-circle-plus "></i> Tambah</button>
 <?php endif; ?>
 
             <!-- Table -->
@@ -100,11 +100,11 @@ if (isset($_POST['ubah'])) {
                         <td><?= htmlspecialchars($akun['email']); ?></td>
                         <td>Password Ter-enkripsi</td>
                         <td width="20%" class="text-center">
-                          <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal"
+                          <button type="button" class="btn btn-warning mb-1 rounded-pill" data-bs-toggle="modal"
                                   data-bs-target="#modalUbah<?= $akun['id_akun']; ?>">
                             <i class="fa-regular fa-pen-to-square"></i> Ubah
                           </button>
-                          <button type="button" class="btn btn-danger mb-1" data-bs-toggle="modal"
+                          <button type="button" class="btn btn-danger mb-1 rounded-pill" data-bs-toggle="modal"
                                   data-bs-target="#modalHapus<?= $akun['id_akun']; ?>">
                             <i class="fa-solid fa-trash-can"></i> Hapus
                           </button>
@@ -120,7 +120,7 @@ if (isset($_POST['ubah'])) {
                         <td><?= htmlspecialchars($akun['email']); ?></td>
                         <td>Password Ter-enkripsi</td>
                         <td width="20%" class="text-center">
-                          <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal"
+                          <button type="button" class="btn btn-success mb-1 rounded-pill" data-bs-toggle="modal"
                                   data-bs-target="#modalUbah<?= $akun['id_akun']; ?>">
                             <i class="fa-regular fa-pen-to-square"></i> Ubah
                           </button>
@@ -187,8 +187,8 @@ if (isset($_POST['ubah'])) {
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>
+                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Kembali</button>
+                <button type="submit" name="tambah" class="btn btn-primary rounded-pill">Tambah</button>
             </div>
             </form>
         </div>
@@ -254,8 +254,8 @@ if (isset($_POST['ubah'])) {
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                    <button type="submit" name="ubah" class="btn btn-success">Ubah</button>
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Kembali</button>
+                    <button type="submit" name="ubah" class="btn btn-success rounded-pill">Ubah</button>
                 </div>
                 </form>
             </div>
@@ -277,8 +277,8 @@ if (isset($_POST['ubah'])) {
                     <p>Yakin Ingin Menghapus Data Akun : <?= $akun['nama']; ?> ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <a href="hapus-akun.php?id_akun=<?= $akun['id_akun'] ?>" class="btn btn-danger">Hapus</a>
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batal</button>
+                    <a href="hapus-akun.php?id_akun=<?= $akun['id_akun'] ?>" class="btn btn-danger rounded-pill">Hapus</a>
                 </div>
             </div>
         </div>

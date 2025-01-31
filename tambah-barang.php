@@ -35,7 +35,7 @@ if (isset($_POST['tambah'])) {
     <h1> Tambah Data Barang </h1>
     <hr>
 
-    <a href="index.php" class="btn btn-primary mb-3"><i class="fa-solid fa-right-from-bracket"></i> Kembali</a>
+    <a href="index.php" class="btn btn-primary mb-3 rounded-pill"><i class="fa-solid fa-right-from-bracket"></i> Kembali</a>
 
     <form action="" method="post">
         <div class="mb-3">
@@ -51,7 +51,7 @@ if (isset($_POST['tambah'])) {
             <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga Barang..." required>
         </div>
 
-        <button type="submit" name="tambah" class="btn btn-primary" style="float: right;"> <i
+        <button type="submit" name="tambah" class="btn btn-primary rounded-pill" style="float: right;"> <i
                 class="fas fa-plus"></i>Tambah</button>
 
     </form>

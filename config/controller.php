@@ -275,3 +275,24 @@ function update_akun($post)
 
     return mysqli_affected_rows($db);
 }
+
+
+
+function create_pegawai($post)
+{
+    global $db;
+
+    $nama       =   ($post['nama']);
+    $jabatan        =   ($post['jabatan']);
+    $email      =   ($post['email']);
+    $telepon    =   ($post['telepon']);
+    $alamat    =   ($post['alamat']);   
+   
+
+    //query tambah data
+    $query = "INSERT INTO pegawai VALUES(null, '$nama', '$jabatan', '$telepon', '$alamat','$email',)";
+
+    mysqli_query($db, $query);
+
+    return mysqli_affected_rows($db);
+}
