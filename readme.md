@@ -1,5 +1,5 @@
 Teknologi : 
-- PHP 8.*
+- PHP 7.*
 - Bootstrap 4.*
 - MySQL/MariaDB
 
@@ -13,7 +13,5 @@ User Login :
 - password : 123456
 
 3. Akun Operator Mahasiswa 
-- username : mahasiswa
+- username : mahasiswaa
 - password : 123456
-
-4. Masih belajar aku
