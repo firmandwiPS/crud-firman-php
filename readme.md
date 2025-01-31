@@ -9,9 +9,9 @@ User Login :
 - password : 123456
 
 2. Akun Operator Barang
-- username : operatorbarang
+- username : barang
 - password : 123456
 
 3. Akun Operator Mahasiswa 
-- username : operatormahasiswa
+- username : mahasiswa
 - password : 123456
