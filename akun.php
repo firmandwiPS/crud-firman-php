@@ -54,7 +54,7 @@ if (isset($_POST['ubah'])) {
 ?>
 
 <div class="content-wrapper mt-5">
-    <h1><i class="fa-solid fa-database"></i> Data Akun </h1>
+    <h1 class=""> Data Akun </h1>
     <hr>
 
 
@@ -66,7 +66,7 @@ if (isset($_POST['ubah'])) {
       <div class="col-12">
         <div class="card shadow-sm rounded">
           <div class="card-header bg-primary text-white">
-            <h3 class="card-title"><i class="fa-solid fa-user"></i> Tabel Data Akun</h3>
+            <h3 class="card-title"> Tabel Data Akun</h3>
           </div>
           
           <!-- /.card-header -->
