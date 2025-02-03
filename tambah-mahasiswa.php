@@ -29,7 +29,7 @@ if (isset($_POST['tambah'])) {
 }
 ?>
 
-<div class="container mt-5">
+<div class="content-wrapper mt-5">
     <h1> Tambah Data Mahasiswa </h1>
     <hr>
     <a href="mahasiswa.php" class="btn btn-primary mb-3 rounded-pill"><i class="fa-solid fa-right-from-bracket"></i> Kembali</a>

@@ -37,7 +37,7 @@ $mahasiswa = mysqli_fetch_array($mahasiswa);
 
 ?>
 
-<div class="container mt-5">
+<div class="content-wrapper mt-5">
     <h1>Ubah Mahasiswa</h1>
     <hr>
 

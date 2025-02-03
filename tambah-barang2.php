@@ -28,7 +28,7 @@ if (isset($_POST['tambah'])) {
 }
 ?>
 
-<div class="container mt-5">
+<div class="content-wrapper mt-5">
     <h1> Tambah Data Barang </h1>
     <hr>
 

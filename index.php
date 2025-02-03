@@ -263,4 +263,7 @@ if (isset($_POST['filter'])) {
     </div>
   </div>
 </div>
+
+
+
   <?php include 'layout/footer.php' ?>

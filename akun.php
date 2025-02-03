@@ -53,7 +53,7 @@ if (isset($_POST['ubah'])) {
 
 ?>
 
-<div class="container mt-5">
+<div class="content-wrapper mt-5">
     <h1><i class="fa-solid fa-database"></i> Data Akun </h1>
     <hr>
 
