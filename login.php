@@ -3,7 +3,9 @@ session_start();
 
 include 'config/app.php';
 
-// cek apakh tombol login dpat di tekan
+$errorAuth = false;
+$errorRecaptcha = false;
+
 if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
@@ -32,15 +34,20 @@ if (isset($_POST['login'])) {
                 exit;
             } else {
                 $errorAuth = true;
+                $errorMessage = "Password salah!";
             }
         } else {
             $errorAuth = true;
+            $errorMessage = "Username tidak ditemukan!";
         }
     } else {
         $errorRecaptcha = true;
+        $errorMessage = "Verifikasi reCAPTCHA gagal!";
     }
 }
 ?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -80,7 +87,11 @@ if (isset($_POST['login'])) {
     <div class="login-container">
         <img src="assets/img/logo.svg" alt="Logo" width="80" class="mb-3">
         <h2 class="mb-4">Silahkan Login</h2>
-        
+        <?php if ($errorAuth || $errorRecaptcha) : ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $errorMessage; ?>
+    </div>
+<?php endif; ?>
         <form action="" method="POST">
             <div class="form-floating mb-3">
                 <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username" required>

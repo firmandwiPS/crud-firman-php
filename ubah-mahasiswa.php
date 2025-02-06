@@ -36,21 +36,21 @@ $mahasiswa = mysqli_query($db, "SELECT * FROM mahasiswa WHERE id_mahasiswa = $id
 $mahasiswa = mysqli_fetch_array($mahasiswa);
 
 ?>
-
-<div class="content-wrapper mt-5">
+<div class="content-wrapper ">
+<div class=" container mt-5">
     <h1>Ubah Mahasiswa</h1>
     <hr>
-
+    
     <form action="" method="post" enctype="multipart/form-data">
         <input type="text" name="id_mahasiswa" value="<?= $mahasiswa['id_mahasiswa']; ?>">
         <input type="text" name="fotoLama" value="<?= $mahasiswa['foto']; ?>">
-
+    
         <div class="mb-3">
             <label for="nama" class="form-label">Nama mahasiswa</label>
             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama mahasiswa....." required
                 value="<?= $mahasiswa['nama'] ?>">
         </div>
-
+    
         <div class="row">
             <div class="mb-3 col-6">
                 <label for="prodi" class="form-label">Program Studi</label>
@@ -63,7 +63,7 @@ $mahasiswa = mysqli_fetch_array($mahasiswa);
                     </option>
                 </select>
             </div>
-
+    
             <div class="mb-3 col">
                 <label for="jk" class="form-label">Jenis Kelamin</label>
                 <select name="jk" id="jk" class="form-control" required>
@@ -73,24 +73,24 @@ $mahasiswa = mysqli_fetch_array($mahasiswa);
                 </select>
             </div>
         </div>
-
+    
         <div class="mb-3">
             <label for="telepon" class="form-label">Telepon</label>
             <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Telepon...." required
                 value="<?= $mahasiswa['telepon'] ?>">
         </div>
-
+    
         <div class="mb-3">
             <label for="alamat" class="form-label">Alamat</label>
             <textarea name="alamat" id="alamat" class="form-control"> <?= $mahasiswa['alamat']; ?></textarea>
         </div>
-
+    
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Email...." required
                 value="<?= $mahasiswa['email'] ?>">
         </div>
-
+    
         <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
             <input type="file" class="form-control" id="foto" name="foto" placeholder="Foto....">
@@ -101,13 +101,15 @@ $mahasiswa = mysqli_fetch_array($mahasiswa);
             </p>
             <img src="assets/img/<?= $mahasiswa['foto']; ?>" alt="foto" width="100px">
         </div>
-
+    
         <button type="submit" class="btn btn-primary rounded-pill " name="tambah" style="float: right;">Ubah
-
+    
         </button>
     </form>
     <hr>
+    </div>
 </div>
+
 <script>
     function previewImg() {
         const foto = document.querySelector('#foto');

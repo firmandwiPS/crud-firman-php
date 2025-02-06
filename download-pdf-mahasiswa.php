@@ -20,10 +20,10 @@ if ($_SESSION["level"] != 1 and $_SESSION["level"] != 3) {
 
 require __DIR__ . '/vendor/autoload.php';
 require 'config/app.php';
-
+  
 use Spipu\Html2Pdf\Html2Pdf;
 
-$data_barang = select("SELECT * FROM mahasiswa");
+$data_mahasiswa = select("SELECT * FROM mahasiswa");
 
 // Initialize the content variable
 $content = '';
@@ -48,16 +48,16 @@ $content .= '
         </tr>';
 
 $no = 1;
-foreach ($data_barang as $barang) {
+foreach ($data_mahasiswa as $mahasiswa) {
     $content .= '
     <tr>
         <td>' . $no++ . '</td>
-        <td>' . $barang['nama'] . '</td>
-        <td>' . $barang['prodi'] . '</td>
-        <td>' . $barang['jk'] . '</td>
-        <td>' . $barang['telepon'] . '</td>
-        <td>' . $barang['email'] . '</td>
-        <td><img src="http://localhost/crud-firman-php/assets/img/' . $barang['foto'] . '" class="gambar"></td>
+        <td>' . $mahasiswa['nama'] . '</td>
+        <td>' . $mahasiswa['prodi'] . '</td>
+        <td>' . $mahasiswa['jk'] . '</td>
+        <td>' . $mahasiswa['telepon'] . '</td>
+        <td>' . $mahasiswa['email'] . '</td>
+        <td><img src="http://localhost/crud-firman-php/assets/img/' . $mahasiswa['foto'] . '" class="gambar"></td>
 
     </tr>
     ';
