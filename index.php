@@ -1,8 +1,5 @@
 <?php
-
-
-    session_start();
-
+session_start();
 
 if (!isset($_SESSION["login"])) {
     echo "<script>
@@ -12,7 +9,7 @@ if (!isset($_SESSION["login"])) {
     exit;
 }
 
-if ($_SESSION["level"] != 1 and $_SESSION["level"] != 2 ) {
+if ($_SESSION["level"] != 1 and $_SESSION["level"] != 2) {
     echo "<script>
             alert('Perhatian Anda Tidak Punya Hak Akses!!');
             document.location.href='akun.php';
@@ -20,36 +17,25 @@ if ($_SESSION["level"] != 1 and $_SESSION["level"] != 2 ) {
     exit;
 }
 
-
 $title = 'Daftar Barang';
-
 include 'layout/header.php';
 
-// $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
-
-$jumlahDataPerhalaman = 1; // Set the number of items per page
-$halamanAktif = 1; // Default active page
-$jumlahHalaman = 1; // Default number of pages
-
-
+$jumlahDataPerhalaman = 1;
+$halamanAktif = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
+$awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
+$jumlahHalaman = 1; // Default value to avoid undefined variable warning
 
 if (isset($_POST['filter'])) {
-  $tgl_awal = strip_tags($_POST['tgl_awal'] . " 00:00:00");
-  $tgl_akhir = strip_tags($_POST['tgl_akhir'] . " 23:59:59");
+    $harga_min = (int)strip_tags($_POST['harga_min']);
+    $harga_max = (int)strip_tags($_POST['harga_max']);
 
-  $data_barang = select("SELECT * FROM barang WHERE tanggal BETWEEN '$tgl_awal' AND '$tgl_akhir' ORDER BY id_barang DESC");
+    $data_barang = select("SELECT * FROM barang WHERE harga BETWEEN $harga_min AND $harga_max ORDER BY id_barang DESC");
 } else {
-  // Get total data count
-  $jumlahData = count(select("SELECT * FROM barang"));
-  $jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
-  $halamanAktif = (isset($_GET["halaman"]) ? (int)$_GET['halaman'] : 1);
-  $awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
-
-  // Fetch data for the current page
-  $data_barang = select("SELECT * FROM barang ORDER BY id_barang DESC LIMIT $awalData, $jumlahDataPerhalaman");
+    $jumlahData = count(select("SELECT * FROM barang"));
+    $jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
+    $data_barang = select("SELECT * FROM barang ORDER BY id_barang DESC LIMIT $awalData, $jumlahDataPerhalaman");
 }
 ?>
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -207,7 +193,6 @@ if (isset($_POST['filter'])) {
                     </a>
                   </li>
                 <?php endif; ?>
-
                 <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
                   <li class="page-item <?= $i == $halamanAktif ? 'active' : ''; ?>">
                     <a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a>
@@ -234,35 +219,36 @@ if (isset($_POST['filter'])) {
   </div>
 
 
-<!-- Model Firter -->
+<!-- Modal Filter -->
 <div class="modal fade" id="modalFilter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-success">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-seacrh"></i> Filter Data</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-search"></i> Filter Data Berdasarkan Harga</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-              <form action="" method="post">
-                <div class="from-group">
-                  <label for="tgl_awal">Tanggal Awal</label>
-                  <input type="date" name="tgl_awal" id="tgl_awal" class="form-control">
-                </div>
-                <div class="from-group">
-                  <label for="tgl_akhir">Tanggal Akhir</label>
-                  <input type="date" name="tgl_akhir" id="tgl_akhir" class="form-control">
-                </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="submit" name="filter" class="btn btn-primary">Submit</button>
-      </div>
-      </form>
+        <form action="" method="post">
+          <div class="form-group">
+            <label for="harga_min">Harga Minimum</label>
+            <input type="number" name="harga_min" id="harga_min" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="harga_max">Harga Maksimum</label>
+            <input type="number" name="harga_max" id="harga_max" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" name="filter" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
+
 
 
 
