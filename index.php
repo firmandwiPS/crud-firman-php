@@ -20,7 +20,7 @@ if ($_SESSION["level"] != 1 and $_SESSION["level"] != 2) {
 $title = 'Daftar Barang';
 include 'layout/header.php';
 
-$jumlahDataPerhalaman = 1;
+$jumlahDataPerhalaman = 5;
 $halamanAktif = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
 $awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
 $jumlahHalaman = 1; // Default value to avoid undefined variable warning
@@ -29,12 +29,13 @@ if (isset($_POST['filter'])) {
     $harga_min = (int)strip_tags($_POST['harga_min']);
     $harga_max = (int)strip_tags($_POST['harga_max']);
 
-    $data_barang = select("SELECT * FROM barang WHERE harga BETWEEN $harga_min AND $harga_max ORDER BY id_barang DESC");
+    $data_barang = select("SELECT * FROM barang WHERE harga BETWEEN $harga_min AND $harga_max ORDER BY harga ASC");
 } else {
     $jumlahData = count(select("SELECT * FROM barang"));
     $jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
     $data_barang = select("SELECT * FROM barang ORDER BY id_barang DESC LIMIT $awalData, $jumlahDataPerhalaman");
 }
+
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -158,27 +159,27 @@ if (isset($_POST['filter'])) {
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $no = 1; ?>
-                  <?php foreach ($data_barang as $barang): ?>
-                    <tr>
-                      <td><?= $no++; ?></td>
-                      <td><?= htmlspecialchars($barang['nama']); ?></td>
-                      <td><?= htmlspecialchars($barang['jumlah']); ?></td>
-                      <td>RP. <?= number_format($barang['harga'], 0, ',', '.'); ?></td>
-                      <td class="text-center">
-                        <img src="barcode.php?codetype=Code128&size=15&text=<?= htmlspecialchars($barang['barcode']); ?>&print=true" alt="barcode">
-                      </td>
-                      <td><?= date("d/m/Y | H:i:s", strtotime($barang['tanggal'])); ?></td>
-                      <td class="text-center">
-                        <a href="ubah-barang.php?id_barang=<?= $barang['id_barang']; ?>" class="btn btn-warning rounded-pill" data-toggle="tooltip" title="Ubah Data">
-                          Ubah
-                        </a>
-                        <a href="hapus-barang.php?id_barang=<?= $barang['id_barang']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Yakin Data Barang Akan Dihapus?');" data-toggle="tooltip" title="Hapus Data">
-                         Hapus
-                        </a>
-                      </td>
-                    </tr>
-                  <?php endforeach; ?>
+                  <?php $no = $awalData + 1; ?>
+<?php foreach ($data_barang as $barang): ?>
+  <tr>
+    <td><?= $no++; ?></td>
+    <td><?= htmlspecialchars($barang['nama']); ?></td>
+    <td><?= htmlspecialchars($barang['jumlah']); ?></td>
+    <td>RP. <?= number_format($barang['harga'], 0, ',', '.'); ?></td>
+    <td class="text-center">
+      <img src="barcode.php?codetype=Code128&size=15&text=<?= htmlspecialchars($barang['barcode']); ?>&print=true" alt="barcode">
+    </td>
+    <td><?= date("d/m/Y | H:i:s", strtotime($barang['tanggal'])); ?></td>
+    <td class="text-center">
+      <a href="ubah-barang.php?id_barang=<?= $barang['id_barang']; ?>" class="btn btn-warning rounded-pill" data-toggle="tooltip" title="Ubah Data">
+        Ubah
+      </a>
+      <a href="hapus-barang.php?id_barang=<?= $barang['id_barang']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Yakin Data Barang Akan Dihapus?');" data-toggle="tooltip" title="Hapus Data">
+        Hapus
+      </a>
+    </td>
+  </tr>
+<?php endforeach; ?>
                 </tbody>
               </table>
             </div>
@@ -224,7 +225,7 @@ if (isset($_POST['filter'])) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-success">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-search"></i> Filter Data Berdasarkan Harga</h5>
+        <h5 class="modal-title"><i class="fas fa-search"></i> Filter Data Berdasarkan Harga</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -241,7 +242,7 @@ if (isset($_POST['filter'])) {
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="submit" name="filter" class="btn btn-primary">Submit</button>
+            <button type="submit" name="filter" class="btn btn-primary">Filter</button>
           </div>
         </form>
       </div>
